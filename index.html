@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>AR</title>
+    <title>ARでイラストだすよ～</title>
 
     <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
@@ -15,25 +15,25 @@
     <a-scene embedded arjs="debugUIEnabled:false;">
         <a-entity camera></a-entity>
 
-        <!-- Markerを表示した際の処理を以下に記述する -->
-        <!-- ARマーカーのファイル名をここで指定する -->
-        <a-marker type="pattern" url="img/pattern_simple_qrcode.patt">
-
-            <!-- 表示したい画像を src= ～ で指定する -->
-            <!-- 画像の大きさは width と height で設定可能 -->
-            <!-- 画像を表示させる位置は position で設定可能 -->
-            <!-- 画像を水平に表示させる場合は下記の rotation でOK -->
-            <!-- 最初のイラスト -->
-            <a-image width="1" height="1" position="0.2 0.4 0.4" rotation="-90 0 0" src="img/icon.png"
-                    material="transparent: true; depthTest: false;">
-            </a-image>
-            
-                <!-- 2つ目のイラスト -->
-            <a-image width="1" height="1" position="-0.2 -0.4 -0.4" rotation="-90 0 0" src="img/icon.png"
-                    material="transparent: true; depthTest: false;">
-            </a-image>
+        <!-- マーカーの設定 -->
+        <a-marker type="pattern" url="img/pattern_usagi.patt">
+            <!-- イラストを表示 -->
+            <a-image id="changingImage" width="1" height="1" position="0 0 0" rotation="-90 0 0" src="img/icon1.png"></a-image>
         </a-marker>
     </a-scene>
+
+    <script>
+        // 画像を次々と切り替えるためのスクリプト
+        let images = ["img/icon1.png", "img/icon2.png"]; // 画像のリスト
+        let currentIndex = 0;
+        const imageElement = document.getElementById("changingImage");
+
+        // 一定間隔で画像を切り替える
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length; // インデックスを更新
+            imageElement.setAttribute('src', images[currentIndex]); // 新しい画像をセット
+        }, 2000); // 2000ミリ秒（2秒）ごとに切り替え
+    </script>
 </body>
 
 </html>
