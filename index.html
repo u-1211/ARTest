@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -18,34 +18,21 @@
         <!-- マーカーの設定 -->
         <a-marker type="pattern" url="img/pattern_simple_qrcode.patt">
             <!-- イラストを表示 -->
-            <a-image id="changingImage" width="1" height="1" position="0 0 0" rotation="-90 0 0" src="img/test1.png"></a-image>
+            <a-image id="changingImage" width="1" height="1" position="0 0 0" rotation="-90 0 0" src="img/icon1.png"></a-image>
         </a-marker>
     </a-scene>
 
     <script>
-        // 画像を次々と切り替えるためのリスト
-        let images = ["img/test1.png", "img/test2.png", "img/test3.png"];
-        let currentIndex = 0; // 現在のインデックス
-        let direction = 1; // 1は前進、-1は後退を意味する
+        // 画像を次々と切り替えるためのスクリプト
+        let images = ["img/icon.png", "img/icon2.png"]; // 画像のリスト
+        let currentIndex = 0;
         const imageElement = document.getElementById("changingImage");
 
         // 一定間隔で画像を切り替える
         setInterval(() => {
-            // 次のインデックスを計算
-            currentIndex += direction;
-
-            // 最後まで行ったら後退、最初まで行ったら前進に切り替える
-            if (currentIndex >= images.length) {
-                direction = -1; // 後退
-                currentIndex = images.length - 2; // 最後の一つ前の画像に戻る
-            } else if (currentIndex < 0) {
-                direction = 1; // 前進
-                currentIndex = 1; // 最初の次の画像に進む
-            }
-
-            // 新しい画像をセット
-            imageElement.setAttribute('src', images[currentIndex]);
-        }, 500); // 2秒ごとに切り替え
+            currentIndex = (currentIndex + 1) % images.length; // インデックスを更新
+            imageElement.setAttribute('src', images[currentIndex]); // 新しい画像をセット
+        }, 1000); // 1000ミリ秒（1秒）ごとに切り替え
     </script>
 </body>
 
