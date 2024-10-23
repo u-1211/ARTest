@@ -18,13 +18,13 @@
         <!-- マーカーの設定 -->
         <a-marker type="pattern" url="img/pattern_simple_qrcode.patt">
             <!-- イラストを表示 -->
-            <a-image id="changingImage" width="5" height="5" position="0 0 0" rotation="-90 0 0" src="img/usagi1.png"></a-image>
+            <a-image id="changingImage" width="4" height="4" position="0 0 0" rotation="-90 0 0" src="img/usagi1.png"></a-image>
         </a-marker>
     </a-scene>
 
     <script>
         // 画像を次々と切り替えるためのスクリプト
-        let images = ["img/usagi1.png", "img/usagi0.png", "img/usagi2.png", "img/usagi0.png", "img/usagi3.png", "img/usagi0.png", "img/usagi4.png", "img/usagi5.png", "img/usagi6.png"]; // 画像のリスト
+        let images = ["img/usagi1.png", "img/usagi0.png", "img/usagi2.png", "img/usagi0.png", "img/usagi3.png", "img/usagi0.png", "img/usagi4.png", "img/usagi5.png", "img/usagi6.png", "img/usagi7.png", "img/usagi8.png"]; // 画像のリスト
         let currentIndex = 0;
         const imageElement = document.getElementById("changingImage");
 
